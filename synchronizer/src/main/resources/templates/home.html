@@ -47,27 +47,38 @@
 <script>
     $(function () {
 
-        let csrfToken = getCookie();
-        console.log(csrfToken);
-        let hiddenInput = '<input type="hidden" name="csrfToken" value="' + csrfToken + '">';
-        $(`#form-elem`).append(hiddenInput);
+        console.log("came");
+        $.ajax({
+            type: "GET",
+            url: '/get-token',
+            success: function (data) {
+                console.log(data);
+                appendInput(data);
+            },
+            error: function (data) {
 
+            }
+        });
     });
 
     function getCookie() {
-        let name = "csrfCookie=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
+        $.ajax({
+            type: "GET",
+            url: '/get-token',
+            success: function (data) {
+                console.log(data);
+                appendInput(data);
+            },
+            error: function (data) {
+
             }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
+        });
+    }
+
+    function appendInput(csrfToken) {
+
+        let hiddenInput = '<input type="hidden" name="csrfToken" value="' + csrfToken + '">';
+        $(`#form-elem`).append(hiddenInput);
     }
 </script>
 
