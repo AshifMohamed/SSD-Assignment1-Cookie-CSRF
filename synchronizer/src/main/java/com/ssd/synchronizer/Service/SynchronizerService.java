@@ -12,7 +12,6 @@ import java.util.Map;
 public class SynchronizerService {
 
     private final String SESSION_COOKIE_NAME = "sessionId";
-    private final String  CSRF_COOKIE_NAME  = "csrfCookie";
 
     public String getCSRFServerToken(){
 
