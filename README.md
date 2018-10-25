@@ -1,4 +1,4 @@
-# Cookie-CSRF
+# CSRF
 
 Steps to run the applications
 
